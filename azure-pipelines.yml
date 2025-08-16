@@ -33,5 +33,5 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'plan'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/parant-module /dev-project'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/parant-module/dev-project'
             environmentServiceNameAzureRM: 'dev-connection'
