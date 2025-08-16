@@ -17,8 +17,8 @@ stages:
             command: 'init'
             workingDirectory: '$(System.DefaultWorkingDirectory)/parant-module/dev-project'
             backendServiceArm: 'dev-connection'
-            backendAzureRmStorageAccountName: 'sanjaystorage4040'
-            backendAzureRmContainerName: 'sanjaycontainer'
+            backendAzureRmStorageAccountName: 'abhistg31'
+            backendAzureRmContainerName: 'abhi-cont'
             backendAzureRmKey: 'newdev.tfstate'
         - task: TerraformTask@5
           displayName: 'terraform validate'
