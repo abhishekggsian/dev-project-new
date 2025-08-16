@@ -1,0 +1,37 @@
+trigger:
+ branches:
+   include:
+     - feature/101
+       main
+
+pool: Dev-project-agent
+stages:
+  - stage: Buildstage
+    jobs:
+      - job: testingjob
+        steps:
+        - task: TerraformTask@5
+          displayName: 'terraform init'
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/parant-module /dev-project'
+            backendServiceArm: 'dev-connection'
+            backendAzureRmStorageAccountName: 'sanjaystorage4040'
+            backendAzureRmContainerName: 'sanjaycontainer'
+            backendAzureRmKey: 'newdev.tfstate'
+        - task: TerraformTask@5
+          displayName: 'terraform validate'
+          inputs:
+            provider: 'azurerm'
+            command: 'validate'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/parant-module /dev-project'
+          
+        
+        - task: TerraformTask@5
+          displayName: 'terraform plan'
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/parant-module /dev-project'
+            environmentServiceNameAzureRM: 'dev-connection'
