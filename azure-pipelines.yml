@@ -8,14 +8,14 @@ pool: Dev-project-agent
 stages:
   - stage: Buildstage
     jobs:
-      - job: testingjob
+      - job: 'terraformbuildjobs'
         steps:
         - task: TerraformTask@5
           displayName: 'terraform init'
           inputs:
             provider: 'azurerm'
             command: 'init'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/parant-module /dev-project'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/parant-module/dev-project'
             backendServiceArm: 'dev-connection'
             backendAzureRmStorageAccountName: 'sanjaystorage4040'
             backendAzureRmContainerName: 'sanjaycontainer'
@@ -25,7 +25,7 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'validate'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/parant-module /dev-project'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/parant-module/dev-project'
           
         
         - task: TerraformTask@5
